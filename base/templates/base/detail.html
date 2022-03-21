@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% block title %}
+{{posts.title}}
+{% endblock %}
+
+{%block body%}
+<p style="color: white;">{{posts.created_at}}</p>
+<h1>{{posts.title}}</h1>
+<hr>
+<h3><strong>
+    {{posts.intro}}
+</strong>
+</h3>
+<h4>{{posts.body}}</h4>
+
+<hr>
+<hr>
+<h1>Comments</h1>
+<div class="hstack gap-3">
+    {% csrf_token %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div class="field">
+            <div class="control">
+                {% csrf_token %}
+                <button class="button is-success">Submit Comment</button>
+            </div>
+        </div>
+    </form>
+  </div>
+  <div class="commets">
+      {% for comment in com %}
+      <p>{{comment.created_at}}</p>
+      <h3>{{comment.name}}</h3>
+      <h4>{{comment.body}}</h4>
+      
+      {% endfor %}
+  </div>
+{% endblock %}

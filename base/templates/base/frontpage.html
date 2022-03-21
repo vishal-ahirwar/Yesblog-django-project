@@ -1,70 +1,28 @@
-{% extends 'base/base.html' %} {%block title %} YesBlog| Home Page {% endblock
-%} {%block navbar %}
+{% extends 'base/base.html' %}
+{%block title %} YesBlog| Home Page {% endblock %}
+ {%block navbar %}
 <h1 style="color: white">YesBlog| Front Page</h1>
 {% endblock %} 
 {% block body %}
-<div class="container">
-  <div class="row row-cols-4">
+<div class="container" style="margin: 25px; padding: 25px;justify-content: space-between;">
     <div class="col">
       <div class="col">
-        <div class="card" style="width: 18rem">
+        {% for post in posts %}
+        <div class="card" style="width: 58rem;margin: 25px;padding: 25px;">
           <img src="..." class="card-img-top" alt="..." />
           <div class="card-body" style="color: rgba(10, 33, 10, 0.898)">
-            <h5 class="card-title">Card title</h5>
+            <h6>{{post.created_at|timesince}} Ago</h6>
+            <h6 style="color: #222;">{{post.created_at}}</h6>
+            <h5 class="card-title">{{post.title}}</h5>
             <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              {{post.intro}}
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="/detail/{{post.slug}}/"class="btn btn-primary">Explore More! </a>
           </div>
         </div>
+        {% endfor %}
       </div>
-    </div>
-    <div class="col">
-      <div class="col">
-        <div class="card" style="width: 18rem">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body" style="color: rgba(10, 33, 10, 0.898)">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="col">
-        <div class="card" style="width: 18rem">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body" style="color: rgba(10, 33, 10, 0.898)">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="col">
-        <div class="card" style="width: 18rem">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body" style="color: rgba(10, 33, 10, 0.898)">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
-</div>  
 {% endblock %}
